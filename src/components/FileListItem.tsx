@@ -7,11 +7,14 @@ interface Props {
 }
 
 const FileListItem: React.FC<Props> = ({ file }) => {
+  // Verifique se file.urls é uma array antes de chamar map
+  const urls = Array.isArray(file.urls) ? file.urls : [];
+
   return (
     <li>
       <strong>{file.assunto}</strong>
       <ul>
-        {file.urls.map((url, index) => (
+        {urls.map((url, index) => (
           <li key={index}>{url}</li>
         ))}
       </ul>

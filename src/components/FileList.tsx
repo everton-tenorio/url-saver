@@ -11,7 +11,7 @@ const FileList: React.FC = () => {
     const fetchFiles = async () => {
       try {
         const response = await api.get('/files');
-        setFiles(response.data);
+        setFiles(response.data || []); // Certifique-se de que response.data seja um array ou inicialize como um array vazio
       } catch (error) {
         console.error('Error fetching files:', error);
       }
@@ -24,9 +24,13 @@ const FileList: React.FC = () => {
     <div>
       <h2>Arquivos:</h2>
       <ul>
-        {files.map((file) => (
-          <FileListItem key={file._id} file={file} />
-        ))}
+        {Array.isArray(files) ? (
+          files.map((file) => (
+            <FileListItem key={file._id || file.assunto} file={file} />
+          ))
+        ) : (
+          <p>No files available</p>
+        )}
       </ul>
     </div>
   );
