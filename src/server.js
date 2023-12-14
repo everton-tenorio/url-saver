@@ -17,7 +17,7 @@ let client; // Declare a variável client fora do bloco try
 app.post('/api/files', async (req, res) => {
   try {
     // Conectar ao MongoDB
-    const client = new MongoClient('mongodb://localhost:27017') //, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient('mongodb://10.0.0.106:27017') //, { useNewUrlParser: true, useUnifiedTopology: true });
  
 
     // Exemplo de consulta ao banco de dados
@@ -44,7 +44,7 @@ app.post('/api/files', async (req, res) => {
 app.get('/api/files', async (req, res) => {
   try {
     // Conectar ao MongoDB
-    client = new MongoClient('mongodb://localhost:27017');
+    client = new MongoClient('mongodb://10.0.0.106:27017');
     await client.connect();
 
     // Listar todos os bancos de dados

@@ -20,19 +20,23 @@ const FileList: React.FC = () => {
     fetchFiles();
   }, []);
 
+
+
   return (
-    <div>
-      <h2>Arquivos:</h2>
-      <ul>
-        {Array.isArray(files) ? (
-          files.map((file) => (
-            <FileListItem key={file._id || file.assunto} file={file} />
-          ))
-        ) : (
-          <p>No files available</p>
-        )}
-      </ul>
-    </div>
+    <section className="has-background-dark">
+    <div className="container p-5">
+      <h2 className="subtitle pt-5"># TOPICS</h2>
+        <div className="columns is-multiline">
+          {Array.isArray(files) ? (
+            files.map((file) => (
+              <FileListItem key={file._id || file.assunto} file={file} />
+            ))
+          ) : (
+            <p>No files available</p>
+          )}
+        </div>
+      </div>
+    </section>
   );
 };
 
